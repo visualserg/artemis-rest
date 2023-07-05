@@ -1,0 +1,38 @@
+###
+
+HEAD http://localhost:8161/feed/queues/Olala HTTP/1.1
+
+###
+
+POST http://localhost:8161/feed/queues/Olala/pull-consumers HTTP/1.1
+
+###
+
+POST http://localhost:8161/feed/queues/Olala/pull-consumers/attributes-0/1-queue-Olala-1687346768110/consume-next-1 HTTP/1.1
+
+###
+
+POST http://localhost:8161/feed/queues/order-service/create HTTP/1.1
+Content-Type: application/json
+
+{
+  "Id": 0
+}
+
+###
+
+POST http://localhost:8161/feed/queues/order-service/create HTTP/1.1
+Content-Type: application/xml
+
+<order>
+   <name>Monica</name>
+   <item>iPad</item>
+   <cost>$499.99</cost>
+</order>
+###
+
+
+
+HEAD http://localhost:8161/feed/queues/Consumer.SubmitOrder.VirtualTopic.WebApplication2.V1.SubmitOrder HTTP/1.1
+###
+POST http://localhost:8161/feed/queues/Consumer.SubmitOrder.VirtualTopic.WebApplication2.V1.SubmitOrder/pull-consumers/attributes-0/1-queue-Consumer.SubmitOrder.VirtualTopic.WebApplication2.V1.SubmitOrder-1687358518440/consume-next-1 HTTP/1.1

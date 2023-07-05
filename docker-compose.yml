@@ -1,0 +1,21 @@
+version: '2'
+
+services:
+  artemis:
+    image: quay.io/artemiscloud/activemq-artemis-broker-init
+    ports:
+      - "5673:5672"
+      - "8161:8161"
+      - "61616:61616"
+    volumes:      
+      - ./broker/broker.xml:/opt/amq/conf/broker.xml
+      - ./broker/login.config:/opt/amq/conf/login.config      
+      - ./broker/artemis-rest-integrated-1.0-SNAPSHOT.war:/opt/amq/web/artemis-rest.war
+      - ./broker/bootstrap.xml:/opt/amq/conf/bootstrap.xml
+    environment:
+      AMQ_USER: "admin"
+      AMQ_PASSWORD: "admin"
+
+# find / -name bootstrap.xml
+# find / -name etc
+# cat /home/jboss/broker/etc/bootstrap.xml
